@@ -1,0 +1,99 @@
+FUNCTION read_size() : INTEGER
+VAR
+    n:INTEGER;
+BEGIN
+    REPEAT
+       read(n);
+    UNTIL (n<>0 or n=0)
+    RETURN n ;
+END
+
+PROCEDURE read_vectors ( var v1,V2,ps : ARRAY_OF FLOAT, n:INTEGER)
+VAR
+i:INTEGER ;
+BEGIN
+ FOR i FROM 0 TO n-1 DO
+     read(v1[i])
+ END_FOR
+ FOR i FROM 0 TO n-1  DO
+     read(v2[i])
+ END_FOR
+ FOR i FROM 0 TO n-1 step  DO
+     read(ps[i]);
+ END_FOR
+END
+
+PROCEDURE dot_product(v1,V2,ps : ARRAY_OF FLOAT, n:INTEGER)
+VAR
+  i:INTEGER; 
+BEGIN
+    FOR i FROM 0 TO n-1 DO
+      i=i+1 ;
+      ps[i] = v1[i] * v2[i] ;
+    END_FOR
+      write(ps[i]);
+END
+
+//2 eme method dot_product with a function:
+
+FUNCTION dot_product() : STRING;
+VAR
+ n:INTEGER;
+ ps,v1,v2:ARRAY_OF FLOAT;
+ str:STRING ;
+BEGIN
+    
+    FOR i FROM 0 TO n-1 DO
+      i=i+1 ;
+      ps[i] = v1[i] * v2[i] ;
+
+      IF (ps[i]=0) THEN
+         str ="les deux vecteurs sont orthogonaux";
+           return str;
+            
+          ELSE
+          str="les deux vecteurs ne sont pas orthogonaux"
+          return str;
+          END_IF
+      END_IF
+    END_FOR
+     
+    RETURN ps;
+END
+
+
+
+
+
+PROCEDURE orthogonal( ps:ARRAY_OF FLOAT,n: INTEGER )
+VAR
+    i:INTEGER ;
+BEGIN
+    FOR i FROM 0 TO n-1  DO
+    i=i+1;
+    IF ( ps[i]=0) THEN
+        write("les deux vecteurs sont ortogonale")
+    ELSE
+        write("les deux vecteurs ne sont pas orthogonale")
+    END_IF
+    END_IF
+    END_FOR
+END
+
+
+
+ALGORITHM vector
+VAR
+n,i,j:INTEGER ;   
+v1,V2 : ARRAY_OF FLOAT
+BEGIN
+n:= read_size();
+read_vectors(v1,v2,n);  
+dot_product(v1,v2,ps,n);
+orthogonale(ps,n);
+
+//2 eme method dot_product with a function:
+str:= dot_product();
+
+END
+
