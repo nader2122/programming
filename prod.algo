@@ -34,32 +34,6 @@ BEGIN
       write(ps[i]);
 END
 
-//2 eme method dot_product with a function:
-
-FUNCTION dot_product() : STRING;
-VAR
- n:INTEGER;
- ps,v1,v2:ARRAY_OF FLOAT;
- str:STRING ;
-BEGIN
-    
-    FOR i FROM 0 TO n-1 DO
-      i=i+1 ;
-      ps[i] = v1[i] * v2[i] ;
-
-      IF (ps[i]=0) THEN
-         str ="les deux vecteurs sont orthogonaux";
-           return str;
-            
-          ELSE
-          str="les deux vecteurs ne sont pas orthogonaux"
-          return str;
-          END_IF
-      END_IF
-    END_FOR
-     
-    RETURN ps;
-END
 
 
 
@@ -97,3 +71,29 @@ str:= dot_product();
 
 END
 
+//2 eme method dot_product with a function:
+
+FUNCTION dot_product(str) : STRING;
+VAR
+ n:INTEGER;
+ ps,v1,v2:ARRAY_OF FLOAT;
+
+BEGIN
+    
+    FOR i FROM 0 TO n-1 DO
+      i=i+1 ;
+      ps[i] = v1[i] * v2[i] ;
+
+      IF (ps[i]=0) THEN
+         str ="les deux vecteurs sont orthogonaux";
+           return str;
+            
+          ELSE
+          str="les deux vecteurs ne sont pas orthogonaux"
+          return str;
+          END_IF
+      END_IF
+    END_FOR
+     
+    RETURN ps;
+END
